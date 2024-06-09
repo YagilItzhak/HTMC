@@ -14,7 +14,7 @@ HTMC is a lightweight library for creating reusable web components using a simpl
 Include the HTMC script in your HTML file:
 
 ```html
-<script src="path/to/htmc.js" defer></script>
+<script src="https://raw.githubusercontent.com/YagilItzhak/HTMC/main/index.js" defer></script>
 ```
 
 ## Usage
