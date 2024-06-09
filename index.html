@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMC Example</title>
+    <script type="module" src="dist/index.js"></script>
+</head>
+
+<body>
+    <htmc-attach src="comps.htmc"></htmc-attach>
+
+    <!-- Using the custom component -->
+    <my-greeting name="World">
+        <p id="a">This is some inner content.</p>
+    </my-greeting>
+
+    <script>
+        customElements.whenDefined('my-greeting').then(() => {
+            const greetingComponent = document.querySelector('my-greeting');
+            const shadowRoot = greetingComponent.shadowRoot;
+            const changeNameButton = shadowRoot.getElementById('changeNameButton');
+
+            changeNameButton.addEventListener('click', () => {
+                greetingComponent.setAttribute('name', 'HTMC');
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>

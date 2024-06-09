@@ -1,0 +1,22 @@
+{
+  "name": "htmc",
+  "version": "1.0.0",
+  "description": "HTMC is a versatile library designed to extend HTML with reusable web components.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "rollup -c"
+  },
+  "author": "Yagil Itzhak",
+  "license": "ISC",
+  "dependencies": {
+    "@preact/signals-core": "^1.6.0",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.18.0",
+    "rollup-plugin-typescript2": "^0.36.0"
+  }
+}

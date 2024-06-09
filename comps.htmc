@@ -1,0 +1,9 @@
+<htmc-define>
+    <component name="my-greeting" attributes="name">
+        <div>
+            <h1>Hello, <span class="name-slot">${name}</span></h1>
+            <button id="changeNameButton">Change Name</button>
+            <slot></slot>
+        </div>
+    </component>
+</htmc-define>
