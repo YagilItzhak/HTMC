@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMC - Hyper Text Markup Components</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        body {
+            padding-top: 56px;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+
+        .github-icon {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .github-link {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">HTMC</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#introduction">Introduction</a></li>
+                <li class="nav-item"><a class="nav-link" href="#installation">Installation</a></li>
+                <li class="nav-item"><a class="nav-link" href="#usage">Usage</a></li>
+                <li class="nav-item"><a class="nav-link" href="#examples">Examples</a></li>
+                <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+                <li class="nav-item"></li><a class="nav-link" href="#license">License</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="header">
+        <h1>HTMC - Hyper Text Markup Components</h1>
+        <p>A lightweight library for creating reusable web components using a simple HTML-like syntax.</p>
+        <a class="github-link" href="https://github.com/YagilItzhak/HTMC" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub"
+                class="github-icon">
+            Star
+        </a>
+    </div>
+
+    <div class="container">
+        <div id="introduction" class="section">
+            <h2>Introduction</h2>
+            <p>HTMC is a lightweight library that allows you to create reusable web components using a simple HTML-like
+                syntax. It provides a straightforward way to define, import, and use custom components with support for
+                deferred and lazy loading.</p>
+        </div>
+
+        <div id="installation" class="section">
+            <h2>Installation</h2>
+            <p>Include the HTMC script in your HTML file:</p>
+            <pre><code>&lt;script src="https://yagilitzhak.github.io/HTMC/index.js" defer&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <div id="usage" class="section">
+            <h2>Usage</h2>
+            <p>Define custom components using the <code>&lt;component&gt;</code> tag within a
+                <code>&lt;htmc-define&gt;</code> tag. Specify attributes that the component can accept. Use
+                <code>&dollar;{}</code> syntax to denote placeholders for attribute values and
+                <code>&lt;slot&gt;&lt;/slot&gt;</code> to insert inner content dynamically.
+            </p>
+            <pre><code>&lt;htmc-define&gt;
+    &lt;component name="my-button" attributes="onclick"&gt;
+        &lt;button onclick="&dollar;{onclick}"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/button&gt;
+    &lt;/component&gt;
+
+    &lt;component name="my-input" attributes="placeholder maxlength"&gt;
+        &lt;input type="text" placeholder="&dollar;{placeholder}" maxlength="&dollar;{maxlength}"&gt;
+    &lt;/component&gt;
+&lt;/htmc-define&gt;</code></pre>
+        </div>
+
+        <div id="examples" class="section">
+            <h2>Examples</h2>
+            <h3>Basic Example</h3>
+            <p>Use the defined components in your HTML. Set attributes and inner content as needed.</p>
+            <pre><code>&lt;my-button onclick="alert('Button clicked!')"&gt;Click Me!&lt;/my-button&gt;
+&lt;my-input placeholder="Enter text" maxlength="10"&gt;&lt;/my-input&gt;</code></pre>
+
+            <h3>Import Component Definitions</h3>
+            <p>Import external component definitions using the <code>&lt;htmc-attach&gt;</code> tag.</p>
+            <pre><code>&lt;htmc-attach src="path/to/components.htmc"&gt;&lt;/htmc-attach&gt;</code></pre>
+            <p>You can defer or lazy load the components to improve performance:</p>
+            <pre><code>&lt;htmc-attach src="path/to/components.htmc" defer&gt;&lt;/htmc-attach&gt;
+&lt;htmc-attach src="path/to/components.htmc" lazy&gt;&lt;/htmc-attach&gt;</code></pre>
+        </div>
+
+        <div id="demo" class="section">
+            <h2>Live Demo</h2>
+            <p>Try out the live demo below to see HTMC in action. You can edit the code and see the results instantly.
+            </p>
+            <h3>Simple state change demo</h3>
+            <iframe src="https://codesandbox.io/embed/pwskz5?view=editor+%2B+preview&module=%2Findex.html"
+                loading="lazy" style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+                title="HTMC - state example"
+                allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+            <h3>Single page routes demo</h3>
+            <iframe src="https://codesandbox.io/embed/32sq6c?view=editor+%2B+preview&module=%2Findex.html"
+                loading="lazy" style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+                title="Router"
+                allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+                sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+        </div>
+    </div>
+
+    <div id="license" class="section">
+        <h2>License</h2>
+        <p>This library is licensed under the GNU General Public License v3.0. See the <a
+                href="./LICENSE.txt">LICENSE</a>
+            file for more details.
+        </p>
+    </div>
+
+    <footer class="text-center mt-5 mb-4">
+        <p>&copy; 2024 HTMC. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
