@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTMC - Hyper Text Markup Components</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="/favicon.ico">
     <style>
@@ -88,7 +89,7 @@
         <div id="installation" class="section">
             <h2>Installation</h2>
             <p>Include the HTMC script in your HTML file:</p>
-            <pre><code>&lt;script src="https://yagilitzhak.github.io/HTMC/index.js" defer&gt;&lt;/script&gt;</code></pre>
+            <pre><code class="language-html">&lt;script src="https://yagilitzhak.github.io/HTMC/index.js" defer&gt;&lt;/script&gt;</code></pre>
         </div>
 
         <div id="usage" class="section">
@@ -98,7 +99,7 @@
                 <code>&dollar;{}</code> syntax to denote placeholders for attribute values and
                 <code>&lt;slot&gt;&lt;/slot&gt;</code> to insert inner content dynamically.
             </p>
-            <pre><code>&lt;htmc-define&gt;
+            <pre><code class="language-html">&lt;htmc-define&gt;
     &lt;component name="my-button" attributes="onclick"&gt;
         &lt;button onclick="&dollar;{onclick}"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/button&gt;
     &lt;/component&gt;
@@ -113,14 +114,14 @@
             <h2>Examples</h2>
             <h3>Basic Example</h3>
             <p>Use the defined components in your HTML. Set attributes and inner content as needed.</p>
-            <pre><code>&lt;my-button onclick="alert('Button clicked!')"&gt;Click Me!&lt;/my-button&gt;
+            <pre><code class="language-html">&lt;my-button onclick="alert('Button clicked!')"&gt;Click Me!&lt;/my-button&gt;
 &lt;my-input placeholder="Enter text" maxlength="10"&gt;&lt;/my-input&gt;</code></pre>
 
             <h3>Import Component Definitions</h3>
             <p>Import external component definitions using the <code>&lt;htmc-attach&gt;</code> tag.</p>
-            <pre><code>&lt;htmc-attach src="path/to/components.htmc"&gt;&lt;/htmc-attach&gt;</code></pre>
+            <pre><code class="language-html">&lt;htmc-attach src="path/to/components.htmc"&gt;&lt;/htmc-attach&gt;</code></pre>
             <p>You can defer or lazy load the components to improve performance:</p>
-            <pre><code>&lt;htmc-attach src="path/to/components.htmc" defer&gt;&lt;/htmc-attach&gt;
+            <pre><code class="language-html">&lt;htmc-attach src="path/to/components.htmc" defer&gt;&lt;/htmc-attach&gt;
 &lt;htmc-attach src="path/to/components.htmc" lazy&gt;&lt;/htmc-attach&gt;</code></pre>
         </div>
 
@@ -157,6 +158,8 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-html.min.js"></script>
 </body>
 
 </html>
