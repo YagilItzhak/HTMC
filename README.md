@@ -1,6 +1,6 @@
 # HTMC - Hyper Text Markup Components
 
-HTMC is a 3.5 KB library for creating reusable web components using a simple HTML-like syntax. It provides a straightforward way to define, import, and use custom components with support for deferred and lazy loading.
+HTMC is a 4 KB library for creating reusable web components using a simple HTML-like syntax. It provides a straightforward way to define, import, and use custom components with support for deferred and lazy loading.
 
 ## Features
 
