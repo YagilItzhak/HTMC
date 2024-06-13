@@ -1,6 +1,6 @@
 # HTMC - Hyper Text Markup Components
 
-HTMC is a lightweight library for creating reusable web components using a simple HTML-like syntax. It provides a straightforward way to define, import, and use custom components with support for deferred and lazy loading.
+HTMC is a 3.5 KB library for creating reusable web components using a simple HTML-like syntax. It provides a straightforward way to define, import, and use custom components with support for deferred and lazy loading.
 
 ## Features
 
@@ -14,7 +14,7 @@ HTMC is a lightweight library for creating reusable web components using a simpl
 Include the HTMC script in your HTML file:
 
 ```html
-<script src="https://raw.githubusercontent.com/YagilItzhak/HTMC/main/index.js" defer></script>
+<script src="https://yagilitzhak.github.io/HTMC/index.js"></script>
 ```
 
 ## Usage
@@ -92,7 +92,7 @@ You can defer or lazy load the components to improve performance:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reusable Web Components with HTMC</title>
-    <script src="path/to/htmc.js" defer></script>
+    <script src="https://yagilitzhak.github.io/HTMC/index.js" defer></script>
 </head>
 <body>
     <htmc-attach src="components.htmc"></htmc-attach>
@@ -127,7 +127,7 @@ You can defer or lazy load the components to improve performance:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTMC Example</title>
-    <script type="module" src="dist/index.js"></script>
+    <script type="module" src="https://yagilitzhak.github.io/HTMC/index.js"></script>
 </head>
 <body>
     <htmc-attach src="my-component.htmc"></htmc-attach>
@@ -148,6 +148,76 @@ You can defer or lazy load the components to improve performance:
     </script>
 </body>
 </html>
+```
+
+## Named Slots
+
+Named slots allow you to define multiple insertion points within your component. Use the `name` attribute to define and use named slots.
+
+### `named-slots.htmc`
+
+```html
+<htmc-define>
+    <component name="my-card" attributes="title">
+        <div class="card">
+            <h2>${title}</h2>
+            <div class="content">
+                <slot name="content"></slot>
+            </div>
+            <div class="footer">
+                <slot name="footer"></slot>
+            </div>
+        </div>
+    </component>
+</htmc-define>
+```
+
+### `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMC Named Slots Example</title>
+    <script src="https://yagilitzhak.github.io/HTMC/index.js" defer></script>
+</head>
+<body>
+    <htmc-attach src="named-slots.htmc"></htmc-attach>
+
+    <my-card title="My Card">
+        <div slot="footer">This is the footer content.</div>
+        <div slot="content">This is the card content.</div>
+    </my-card>
+</body>
+</html>
+```
+
+## Embedded Scripting
+
+You can also add scripts directly within the `<htmc-define>` tag for more dynamic behavior.
+
+```html
+<htmc-define>
+    <component name="my-greeting" attributes="name">
+        <div>
+            <h1>Hello, ${name}!</h1>
+            <button id="changeNameButton">Change Name</button>
+        </div>
+    </component>
+    <script>
+        customElements.whenDefined('my-greeting').then(() => {
+            const greetingComponent = document.querySelector('my-greeting');
+            const shadowRoot = greetingComponent.shadowRoot;
+            const changeNameButton = shadowRoot.getElementById('changeNameButton');
+
+            changeNameButton.addEventListener('click', () => {
+                greetingComponent.setAttribute('name', 'HTMC');
+            });
+        });
+    </script>
+</htmc-define>
 ```
 
 ## Integration with Other Libraries
