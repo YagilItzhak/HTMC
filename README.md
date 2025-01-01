@@ -1,13 +1,14 @@
 # HTMC - Hyper Text Markup Components
 
-HTMC is a lightweight library for creating reusable web components using a simple HTML-like syntax. It provides a straightforward way to define, import, and use custom components with support for deferred and lazy loading.
+HTMC is a lightweight library for creating reusable web components using a simple HTML-like syntax. It provides an efficient way to define, import, and use custom components with support for static and reactive attributes, lazy loading, and encapsulated styles.
 
 ## Features
 
 - **Reusable Components**: Define custom components with attributes and inner content.
+- **Dynamic State Management**: Handle static and reactive attributes seamlessly.
+- **Scoped Styles**: Use Shadow DOM for style encapsulation.
 - **Dynamic Imports**: Import component definitions from external files.
-- **Deferred and Lazy Loading**: Improve performance by loading components as needed.
-- **Encapsulation**: Use Shadow DOM to encapsulate styles and behavior.
+- **Lazy and Deferred Loading**: Improve performance by loading components as needed.
 
 ## Installation
 
@@ -21,24 +22,24 @@ Include the HTMC script in your HTML file:
 
 ### Define Components
 
-Define custom components using the `<component>` tag within a `<htmc-define>` tag. Specify attributes that the component can accept. Use `${}` syntax to denote placeholders for attribute values and `<slot></slot>` to insert inner content dynamically.
+Define custom components using the `<component>` tag within a `<htmc-define>` tag. Specify attributes that the component can accept. Use `${}` syntax for attribute placeholders and `<slot></slot>` for dynamic inner content.
 
 ```html
 <htmc-define>
-    <component name="my-button" attributes="onclick">
+    <component name="my-button" static-attributes="onclick">
         <button onclick="${onclick}"><slot></slot></button>
     </component>
 
-    <component name="my-input" attributes="placeholder maxlength">
+    <component name="my-input" static-attributes="placeholder maxlength">
         <input type="text" placeholder="${placeholder}" maxlength="${maxlength}">
     </component>
 </htmc-define>
 ```
 
-#### Explanation
+### Explanation
 
-- **`${}` Syntax**: Use `${attributeName}` within your component's HTML to denote a placeholder for the attribute value. When the component is used, these placeholders will be replaced with the actual attribute values.
-- **`<slot></slot>`**: Slots are used to insert inner content provided by the user of the component. This allows for flexible content insertion, making the components more reusable and versatile.
+- **`${}` Syntax**: Use `${attributeName}` within your component's HTML for attribute placeholders.
+- **`<slot></slot>`**: Allows for flexible content insertion, making components more reusable and versatile.
 
 ### Use Components
 
@@ -57,7 +58,7 @@ Import external component definitions using the `<htmc-attach>` tag.
 <htmc-attach src="path/to/components.htmc"></htmc-attach>
 ```
 
-You can defer or lazy load the components to improve performance:
+#### Defer and Lazy Loading
 
 - **Defer**: Load components after the main content has loaded.
 - **Lazy**: Load components only when they are in the viewport.
@@ -67,49 +68,15 @@ You can defer or lazy load the components to improve performance:
 <htmc-attach src="path/to/components.htmc" lazy></htmc-attach>
 ```
 
-## Example
+## Advanced Features
 
-### `components.htmc`
+### State Update Example
 
-```html
-<htmc-define>
-    <component name="my-button" attributes="onclick">
-        <button onclick="${onclick}"><slot></slot></button>
-    </component>
-
-    <component name="my-input" attributes="placeholder maxlength">
-        <input type="text" placeholder="${placeholder}" maxlength="${maxlength}">
-    </component>
-</htmc-define>
-```
-
-### `index.html`
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reusable Web Components with HTMC</title>
-    <script src="path/to/htmc.js" defer></script>
-</head>
-<body>
-    <htmc-attach src="components.htmc"></htmc-attach>
-
-    <my-button onclick="alert('Button clicked!')">Click Me!</my-button>
-    <my-input placeholder="Enter text" maxlength="10"></my-input>
-</body>
-</html>
-```
-
-## State Update Example
-
-### `my-component.htmc`
+#### my-component.htmc
 
 ```html
 <htmc-define>
-    <component name="my-greeting" attributes="name">
+    <component name="my-greeting" reactive-attributes="name">
         <div>
             <h1>Hello, ${name}!</h1>
             <button id="changeNameButton">Change Name</button>
@@ -118,7 +85,7 @@ You can defer or lazy load the components to improve performance:
 </htmc-define>
 ```
 
-### `index.html`
+#### index.html
 
 ```html
 <!DOCTYPE html>
@@ -127,7 +94,7 @@ You can defer or lazy load the components to improve performance:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTMC Example</title>
-    <script type="module" src="dist/index.js"></script>
+    <script src="path/to/htmc.js" defer></script>
 </head>
 <body>
     <htmc-attach src="my-component.htmc"></htmc-attach>
@@ -167,7 +134,7 @@ Tailwind CSS is a utility-first CSS framework that can be used to style your HTM
 
 ```html
 <htmc-define>
-    <component name="my-button" attributes="onclick">
+    <component name="my-button" static-attributes="onclick">
         <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded" onclick="${onclick}"><slot></slot></button>
     </component>
 </htmc-define>
@@ -179,26 +146,28 @@ Tailwind CSS is a utility-first CSS framework that can be used to style your HTM
 
 Defines a set of custom components.
 
-#### Attributes
-None.
+**Attributes**: None.
 
 ### `<component>`
 
 Defines a single custom component within a `<htmc-define>`.
 
-#### Attributes
+**Attributes**:
+
 - `name`: The name of the custom component.
-- `attributes`: A space-separated list of attributes that the component accepts.
+- `static-attributes`: Space-separated list of static attributes.
+- `reactive-attributes`: Space-separated list of reactive attributes.
 
 ### `<htmc-attach>`
 
 Imports external component definitions.
 
-#### Attributes
+**Attributes**:
+
 - `src`: The URL of the external component definitions file.
 - `defer`: (Optional) Defer loading until after the main content has loaded.
 - `lazy`: (Optional) Lazy load the component when it enters the viewport.
 
 ## License
 
-This library is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more details.
+This library is licensed under the GNU General Public License v3.0. See the LICENSE file for more details.
