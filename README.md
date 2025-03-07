@@ -4,11 +4,13 @@ HTMC is a lightweight library for creating reusable web components using a simpl
 
 ## Features
 
-- **Reusable Components**: Define custom components with attributes and inner content.
-- **Dynamic State Management**: Handle static and reactive attributes seamlessly.
-- **Scoped Styles**: Use Shadow DOM for style encapsulation.
-- **Dynamic Imports**: Import component definitions from external files.
-- **Lazy and Deferred Loading**: Improve performance by loading components as needed.
+- 🧩 HTML-based component definitions
+- ⚡️ Reactive attribute updates
+- 🛡 Shadow DOM style encapsulation
+- 🚀 Modern browser optimization
+- 📦 External component imports
+- 🔄 Lazy loading support
+
 
 ## Installation
 
@@ -130,7 +132,7 @@ HTMX allows you to add AJAX requests and other interactive elements to your HTML
 
 ### Tailwind CSS
 
-Tailwind CSS is a utility-first CSS framework that can be used to style your HTMC components. Add Tailwind classes directly to the elements within your component definitions.
+Tailwind CSS is a utility-first CSS framework for styling HTMC components. You can add Tailwind classes directly to the elements within your component definitions.
 
 ```html
 <htmc-define>
